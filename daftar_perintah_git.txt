@@ -1,0 +1,2 @@
+Untuk membuat cabang baru dan berpindah cabang: 
+git checkout -b ardyan_paginasi_user
