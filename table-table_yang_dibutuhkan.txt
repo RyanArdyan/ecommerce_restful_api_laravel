@@ -1,0 +1,92 @@
+Untuk membangun database untuk situs e-commerce yang kompleks, Anda perlu merancang beberapa tabel yang mencakup berbagai aspek dari sistem. Berikut adalah beberapa tabel yang umum digunakan beserta kolom-kolom yang relevan:
+
+1. Tabel Users
+    user_id (INT, Primary Key, Auto Increment)
+    username (VARCHAR, Unique)
+    password (VARCHAR)
+    email (VARCHAR, Unique)
+    first_name (VARCHAR)
+    last_name (VARCHAR)
+    phone (VARCHAR)
+    address (TEXT)
+    city (VARCHAR)
+    state (VARCHAR)
+    zip_code (VARCHAR)
+    country (VARCHAR)
+    created_at (DATETIME)
+    updated_at (DATETIME)
+2. Tabel Products
+product_id (INT, Primary Key, Auto Increment)
+name (VARCHAR)
+description (TEXT)
+price (DECIMAL)
+stock_quantity (INT)
+category_id (INT, Foreign Key)
+image_url (VARCHAR)
+created_at (DATETIME)
+updated_at (DATETIME)
+3. Tabel Categories
+category_id (INT, Primary Key, Auto Increment)
+category_name (VARCHAR)
+parent_id (INT, Foreign Key, Nullable) - untuk kategori sub
+created_at (DATETIME)
+updated_at (DATETIME)
+4. Tabel Orders
+order_id (INT, Primary Key, Auto Increment)
+user_id (INT, Foreign Key)
+order_date (DATETIME)
+status (ENUM: 'Pending', 'Shipped', 'Delivered', 'Cancelled')
+total_amount (DECIMAL)
+shipping_address (TEXT)
+created_at (DATETIME)
+updated_at (DATETIME)
+5. Tabel Order_Items
+order_item_id (INT, Primary Key, Auto Increment)
+order_id (INT, Foreign Key)
+product_id (INT, Foreign Key)
+quantity (INT)
+price (DECIMAL) - harga saat pembelian
+created_at (DATETIME)
+updated_at (DATETIME)
+6. Tabel Reviews
+review_id (INT, Primary Key, Auto Increment)
+product_id (INT, Foreign Key)
+user_id (INT, Foreign Key)
+rating (INT) - misalnya 1-5
+comment (TEXT)
+created_at (DATETIME)
+updated_at (DATETIME)
+7. Tabel Payments
+payment_id (INT, Primary Key, Auto Increment)
+order_id (INT, Foreign Key)
+payment_date (DATETIME)
+amount (DECIMAL)
+payment_method (ENUM: 'Credit Card', 'PayPal', 'Bank Transfer', etc.)
+status (ENUM: 'Pending', 'Completed', 'Failed')
+created_at (DATETIME)
+updated_at (DATETIME)
+8. Tabel Wishlists
+wishlist_id (INT, Primary Key, Auto Increment)
+user_id (INT, Foreign Key)
+product_id (INT, Foreign Key)
+created_at (DATETIME)
+9. Tabel Discounts
+discount_id (INT, Primary Key, Auto Increment)
+code (VARCHAR, Unique)
+description (TEXT)
+discount_percentage (DECIMAL)
+start_date (DATETIME)
+end_date (DATETIME)
+created_at (DATETIME)
+updated_at (DATETIME)
+10. Tabel Shipping
+shipping_id (INT, Primary Key, Auto Increment)
+order_id (INT, Foreign Key)
+shipping_method (VARCHAR)
+tracking_number (VARCHAR)
+shipping_date (DATETIME)
+delivery_date (DATETIME)
+created_at (DATETIME)
+updated_at (DATETIME)
+Kesimpulan
+Tabel-tabel di atas mencakup berbagai aspek penting dari sistem
