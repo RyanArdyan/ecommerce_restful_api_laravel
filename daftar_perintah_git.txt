@@ -1,2 +1,5 @@
 Untuk membuat cabang baru dan berpindah cabang: 
 git checkout -b ardyan_paginasi_user
+
+Setelah membuat cabang maka harus push cabang ke cabang main yaitu:
+git push -u origin main nama_cabang_baru
