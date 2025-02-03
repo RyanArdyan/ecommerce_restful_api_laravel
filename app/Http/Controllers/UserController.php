@@ -32,9 +32,11 @@ class UserController extends Controller
         return new UserResource(User::findOrFail($user->user_id));
     }
 
+    // untuk menampilkan semua data user
     public function index()
     {
-        return new UserCollection(User::orderBy('user_id', 'desc')->get());
+        // kembalikkan inisialisasi UserCollection untuk mengirim semua data user yang diurutkan dari angka besar ke kecil berdasarkan column user_id
+        return new UserCollection(User::orderBy('user_id', 'desc')->simplePaginate(3));
     }
 
     public function login()
