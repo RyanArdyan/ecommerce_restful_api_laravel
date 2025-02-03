@@ -3,3 +3,22 @@ git checkout -b ardyan_paginasi_user
 
 Setelah membuat cabang maka harus push cabang baru ke cabang main yaitu:
 git push -u origin main nama_cabang_baru
+
+setelah mengubah kode maka lakukan pull request agar kode di cabang masuk ke cabang main dengan cara:
+buka github lalu pull request
+
+lalu yg punya repository melakukan merge dengan cara:
+buka github lalu merge
+
+setelah di merge maka branch bisa dihapus dengan cara:
+buka github lalu hapus branch
+
+menggabungkan semua perubahan kode dari cabang main ke cabang lain:
+ke cabang lain lalu lakukan git merge main
+
+untuk mengecek apakah ada perubahan yang terlalu dilakukan orang lain terhadap cabang main:
+git fetch
+
+untuk menggabungkan perubahan dari cabang main ke cabang lain:
+git pull
+
