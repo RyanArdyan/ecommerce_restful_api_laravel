@@ -1,5 +1,5 @@
-Membuat fitur API registrasi:
-1. Validasi input username(wajib, minimal 3 karakter, maksimal 255, harus unique), email (sama seperti username namun ditambah ada email nya), password (wajib, minimal 8 karakter), konfirmasi password: (wajib, harus sama dengan password)
-2. jika lolos validasi maka simpan data ke table
+Membuat fitur API login:
+1. Validasi biasa 
+2. validasi login
 3. jika gagal validasi maka kirim pesan error ke user
-4. jika berhasil maka kirim pesan sukses ke user
+4. jika berhasil maka kirim pesan sukses ke user dan kirimkan token
