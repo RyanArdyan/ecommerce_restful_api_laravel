@@ -1,1 +1,1 @@
-baca dokumentasi autentikasi laravel dan selesaikan fitur autentikasi
+bikin fitur middleware yaitu jika user belum login maka tidak bisa mengakses rute /users
