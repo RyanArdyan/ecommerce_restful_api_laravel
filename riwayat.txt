@@ -1,1 +1,1 @@
-membuat fitur menampilkan semua data user
+baca dokumentasi autentikasi laravel dan selesaikan fitur autentikasi

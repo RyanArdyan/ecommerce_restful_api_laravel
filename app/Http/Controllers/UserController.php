@@ -5,14 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 // untuk hashing password
 use Illuminate\Support\Facades\Hash;
-// validasi form registrasi
+// validasi form
 use App\Http\Requests\RegistrasiRequest;
+use App\Http\Requests\LoginRequest;
 // untuk berinteraksi dengan data milik database
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 // untuk mengirim response berupa json
 use App\Http\Resources\UserResource;
 use App\Http\Resources\UserCollection;
+// untuk autentikasi
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -39,8 +42,27 @@ class UserController extends Controller
         return new UserCollection(User::orderBy('user_id', 'desc')->simplePaginate(3));
     }
 
-    public function login()
+    // LoginRequest melakukan validasi form
+    // $request menangkap semua data yang dikirim oleh form
+    public function login(LoginRequest $request)
     {
+        // return response()->json($request->all());
+        // jika autenteikasi dari input name email dan password sama dengan data di table users maka
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            // berisi detail user yang login saat ini
+            $detail_user = Auth::user();
+            // buat token
+            $token = $request->user()->createToken('oligarki_sialan')->plainTextToken;
 
+            return response()->json([
+                'status' => 'sukses',
+                'token' => $token,
+                'user' => [
+                    'user_id' => $detail_user->user_id,
+                    'username' => $detail_user->username,
+                    'email' => $detail_user->email
+                ]
+            ]);
+        }
     }
 }
