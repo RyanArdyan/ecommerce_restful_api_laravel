@@ -4,13 +4,18 @@ use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+// rute tipe kirim, jika user diarahkan ke url berikut maka arahkan ke controller dan method berikut
+Route::post('/registrasi', [UserController::class, 'registrasi']);
 
-// rute tipe kirim, jika user diarahkan ke url berikut maka arahkan ke controller dan method berikut lalu name nya adalah sebagai berikut
-Route::post('/registrasi', [UserController::class, 'registrasi'])->name('user.registrasi');
-// rute tipe kirim, jika user diarahkan ke url berikut maka arahkan ke controller dan method berikut lalu name nya adalah sebagai berikut
-Route::post('/login', [UserController::class, 'login'])->name('user.loginnn');
-// rute tipe dapatkan, jika user diarahkan ke url berikut maka arahkan ke controller dan method berikut lalu name nya adalah sebagai berikut
-Route::get('/users', [UserController::class, 'index'])->name('user.index');
+Route::get('/users', [UserController::class, 'index']); 
+
+Route::post('/login', [UserController::class, 'login']);
+
+// rute grup middleware
+// hanya yang sudah login bisa mengakses grup fungsi berikut
+Route::middleware('auth:sanctum')->group(function () {
+    // rute tipe dapatkan, jika user diarahkan ke url berikut maka arahkan ke controller dan method berikut
+    Route::get('/users', [UserController::class, 'index']); 
+
+    // rute tipe kirim, jika user diarahkan ke url berikut maka arahkan ke controller dan method berikut
+});
