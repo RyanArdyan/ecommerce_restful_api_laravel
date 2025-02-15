@@ -11,6 +11,7 @@ class RegistrasiRequest extends FormRequest
      */
     public function authorize(): bool
     {
+        // jadikan true agar bisa diakses
         return true;
     }
 
