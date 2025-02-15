@@ -17,6 +17,7 @@ class UserResource extends JsonResource
     {
         // menentukan value column database apa saja yang akan dikembalikkan
         return [
+            'pesan' => 'berhasil',
             'user_id' => $this->user_id,
             'username' => $this->username,
             'email' => $this->email,

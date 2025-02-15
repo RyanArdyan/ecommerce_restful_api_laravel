@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 // validasi form
 use App\Http\Requests\RegistrasiRequest;
 use App\Http\Requests\LoginRequest;
+use App\Http\Requests\UpdateUserRequest;
 // untuk berinteraksi dengan data milik database
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
@@ -32,7 +33,7 @@ class UserController extends Controller
         ]);
 
         // gunakan UserResource sebagai response agar seperti java spring boot
-        return new UserResource(User::findOrFail($user->user_id));
+        return new UserResource(User::find($user->user_id));
     }
 
     // untuk menampilkan semua data user
@@ -64,5 +65,35 @@ class UserController extends Controller
                 ]
             ]);
         }
+    }
+
+    // UpdateUserRequest akan mengurus validasi 
+    // request akan mengambil isi attribute name
+    public function update(UpdateUserRequest $request)
+    {
+        // ambil value input name="user_id"
+        $user_id = $request->user_id;
+
+        $detail_user = User::where('user_id', $user_id)->first();
+
+
+        // update detail user ke table users
+        $detail_user->username = $request->username;
+        $detail_user->email = $request->email;
+        $detail_user->nama_pertama = $request->nama_pertama;
+        $detail_user->nama_terakhir = $request->nama_terakhir;
+        $detail_user->telepon = $request->telepon;
+        $detail_user->alamat = $request->alamat;
+        $detail_user->kota = $request->kota;
+        $detail_user->provinsi = $request->provinsi;
+        $detail_user->provinsi = $request->kode_pos;
+        $detail_user->negara = $request->negara;
+        $detail_user->password = Hash::make($request->password);
+
+        // simpan data yang sudah diubah ke database
+        $detail_user->save();
+
+        // kembalikkan response berupa json berupa detail user
+        return new UserResource(User::find($user_id));
     }
 }

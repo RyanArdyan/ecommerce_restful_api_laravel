@@ -15,7 +15,7 @@ Route::post('/login', [UserController::class, 'login']);
 // hanya yang sudah login bisa mengakses grup fungsi berikut
 Route::middleware('auth:sanctum')->group(function () {
     // rute tipe dapatkan, jika user diarahkan ke url berikut maka arahkan ke controller dan method berikut
-    Route::get('/users', [UserController::class, 'index']); 
-
-    // rute tipe kirim, jika user diarahkan ke url berikut maka arahkan ke controller dan method berikut
+    Route::get('/users', [UserController::class, 'index']);
+    // rute tipe letakkan, jika user diarahkan ke url berikut maka arahkan ke controller dan method berikut
+    Route::post('/user/update', [UserController::class, 'update']); 
 });

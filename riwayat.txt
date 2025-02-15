@@ -1,1 +1,1 @@
-bikin fitur middleware yaitu jika user belum login maka tidak bisa mengakses rute /users
+fitur update user bisa menggunakan rute tipe post tapi tidak dengan tipe put maka perbaiki itu
