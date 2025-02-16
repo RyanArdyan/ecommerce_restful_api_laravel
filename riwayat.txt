@@ -1,1 +1,1 @@
-fitur update user bisa menggunakan rute tipe post tapi tidak dengan tipe put maka perbaiki itu
+selesaikan fitur show user.

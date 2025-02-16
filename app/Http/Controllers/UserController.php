@@ -53,8 +53,10 @@ class UserController extends Controller
             // berisi detail user yang login saat ini
             $detail_user = Auth::user();
             // buat token
+            // berisi detail_user->buatToken('oligarki_sialan')->tokenTextBiasa
             $token = $request->user()->createToken('oligarki_sialan')->plainTextToken;
 
+            // kembalikkan tanggapan berupa json
             return response()->json([
                 'status' => 'sukses',
                 'token' => $token,
@@ -65,7 +67,15 @@ class UserController extends Controller
                 ]
             ]);
         }
+
+        // jika autentikasi gagal karena email dan password tidak cocok 
+        // kembalikkan tanggapan berupa json
+        return response()->json([
+            // kunci pesan berisi pesan berikut
+            'pesan' => 'email dan password yang anda masukkan tidak sama dengan yang ada di database kami'
+        ]);
     }
+
 
     // UpdateUserRequest akan mengurus validasi 
     // request akan mengambil isi attribute name
@@ -95,5 +105,20 @@ class UserController extends Controller
 
         // kembalikkan response berupa json berupa detail user
         return new UserResource(User::find($user_id));
+    }
+
+    // parameter $user_id akan berisi user_id yang dikirim oleh rute
+    public function show($user_id)
+    {
+        // kembali instansi dari UserSumberDaya berisi detail user
+        return new UserResource(User::find($user_id));
+    }
+
+
+    public function pesan_untuk_tamu_belum_login()
+    {
+        return response()->json([
+            'pesan' => 'anda harus login terlebih dahulu'
+        ]);
     }
 }
