@@ -23,4 +23,4 @@ untuk menggabungkan perubahan dari cabang main ke cabang lain:
 git pull
 
 Cara menghapus cabang yang sudah tidak digunakan:
-git branch -d nama_cabang
+git branch -d nama_cabang`
