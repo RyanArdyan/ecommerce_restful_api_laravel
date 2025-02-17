@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\UserController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 // rute tipe kirim, jika user diarahkan ke url berikut maka arahkan ke controller dan method berikut
@@ -21,4 +21,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/user/update', [UserController::class, 'update']);
     // rute tipe dapatkan, jika user diarahkan ke url berikut lalu mengirim user_id maka arahkan ke controller dan method berikut
     Route::get('/user/{user_id}', [UserController::class, 'show']);
+    // rute tipe kirim, jika user diarahkan ke url berikut maka arahkan ke controller dan method berikut
+    Route::get('/admin/kategori', [KategoriController::class, 'store']);
 });
