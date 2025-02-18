@@ -25,4 +25,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/admin/kategori', [KategoriController::class, 'store']);
     // rute tipe dapatkan, jika user diarahkan ke url berikut lalu mengirim kategori_id maka arahkan ke controller dan method berikut
     Route::get('/admin/kategori/{kategori_id}', [KategoriController::class, 'show']);
+    // rute tipe dapatkan, jika user diarahkan ke url berikut lalu mengirim kategori_id maka arahkan ke controller dan method berikut
+    Route::get('/admin/kategori/delete/{kategori_id}', [KategoriController::class, 'destroy']);
 });
