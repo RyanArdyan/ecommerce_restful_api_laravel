@@ -4,13 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreUserRequest extends FormRequest
+class StoreKategoriRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
+        // agar bisa diakses
         return true;
     }
 
@@ -22,7 +23,10 @@ class StoreUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            // nama_kategori -> wajib, unik, maksimal 255
+            // parent_id: nullable
+            'nama_kategori' => ['required', 'unique:kategori,nama_kategori', 'max:255'],
+            'parent_id' => ['nullable']
         ];
     }
 }
