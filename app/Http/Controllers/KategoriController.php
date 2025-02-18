@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 // validasi simpan kategori 
 use App\Http\Requests\StoreKategoriRequest;
+use App\Http\Resources\KategoriCollection;
 // model kategori
 use App\Models\Kategori;
 // response json berupa detail data
@@ -12,6 +13,15 @@ use App\Http\Resources\KategoriResource;
 
 class KategoriController extends Controller
 {
+    // untuk menampilkan semua data kategori
+    public function index()
+    {
+        // return response()->json(Kategori::all());
+
+        // kembalikkan panggil inisialisasi KategoriKoleksi untuk mengirim data kategori yang diurutkan dari angka besar ke kecil berdasarkan column kategori_id
+        return new KategoriCollection(Kategori::orderBy('kategori_id', 'desc')->simplePaginate(3));
+    }
+
     // validasi akan dilakukan oleh StoreKategoriRequest sebelum masuk ke blok method nya
     public function store(StoreKategoriRequest $request)
     {

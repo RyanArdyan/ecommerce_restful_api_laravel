@@ -21,8 +21,8 @@ class KategoriResource extends JsonResource
             // index pesan berisi string sukses
             'message' => 'success',
             // index kategori_id berisi nilai input name="kategori_id"
-            'kategori_id' => $request->kategori_id,
-            'nama_kategori' => $request->nama_kategori
+            'kategori_id' => $this->kategori_id,
+            'nama_kategori' => $this->nama_kategori
         ];
     }
 }
