@@ -23,4 +23,10 @@ class KategoriController extends Controller
         // kembalikkan panggil instansiasi KategoriSumberDaya lalu kirimkan detail kategori berdasarkan value kategori_id
         return new KategoriResource(Kategori::find($kategori->kategori_id));
     }
+
+    public function show($kategori_id)
+    {
+        // kembalikkan panggil instansiasi KategoriSumberDaya lalu kirimkan detail kategori berdasarkan value kategori_id
+        return new KategoriResource(Kategori::find($kategori_id));
+    }
 }
