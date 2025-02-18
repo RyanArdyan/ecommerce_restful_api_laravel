@@ -4,6 +4,9 @@ git checkout -b ardyan_paginasi_user
 Setelah membuat cabang maka harus push cabang baru ke cabang main yaitu:
 git push -u origin main nama_cabang_baru
 
+setelah selesai membuat fitur di cabang maka bisa dorong ke remote cabang yaitu:
+git push -u origin nama_cabang
+
 setelah mengubah kode maka lakukan pull request agar kode di cabang masuk ke cabang main dengan cara:
 buka github lalu pull request
 
