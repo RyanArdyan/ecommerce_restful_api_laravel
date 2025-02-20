@@ -3,6 +3,7 @@
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProdukController;
 
 // rute tipe kirim, jika user diarahkan ke url berikut maka arahkan ke controller dan method berikut
 Route::post('/registrasi', [UserController::class, 'registrasi']);
@@ -29,4 +30,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/admin/kategori/delete/{kategori_id}', [KategoriController::class, 'destroy']);
     // rute tipe dapatkan, jika user diarahkan ke url berikut maka arahkan ke controller dan method berikut
     Route::get('/admin/kategori', [KategoriController::class, 'index']);
+    // rute tipe kirim, jika user diarahkan ke url berikut maka arahkan ke controller dan method berikut
+    Route::post('/admin/produk', [ProdukController::class, 'store']);
 });
