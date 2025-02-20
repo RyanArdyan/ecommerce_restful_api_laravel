@@ -32,7 +32,8 @@ return new class extends Migration
                 ->onDelete('cascade');
             $table->string('nama_produk')->unique();
             $table->text('deskripsi');
-            $table->integer('harga');
+            $table->integer('harga_beli');
+            $table->integer('harga_jual');
             $table->integer('stok');
             $table->string('gambar');
             $table->timestamps();
