@@ -32,4 +32,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/admin/kategori', [KategoriController::class, 'index']);
     // rute tipe kirim, jika user diarahkan ke url berikut maka arahkan ke controller dan method berikut
     Route::post('/admin/produk', [ProdukController::class, 'store']);
+    // rute tipe dapatkan, jika user diarahkan ke url berikut lalu mengirimkan id maka arahkan ke controller dan method berikut
+    Route::get('/admin/produk/destroy/{produk_id}', [ProdukController::class, 'destroy']);
 });

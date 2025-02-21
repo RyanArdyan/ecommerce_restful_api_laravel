@@ -35,4 +35,18 @@ class ProdukController extends Controller
             'message' => 'success'
         ]);
     }
+
+    public function destroy($produk_id)
+    {
+        // ambil detail produk
+        $detail_produk = Produk::where('produk_id', $produk_id)->first();
+
+        // hapus detail produk
+        $detail_produk->delete();
+
+        // kembalikkan tanggapan berupa json
+        return response()->json([
+            'message' => 'Success'
+        ]);
+    }
 }

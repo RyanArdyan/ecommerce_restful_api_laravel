@@ -1,1 +1,1 @@
-Belum: hapus bekas kompress gambar dan push fitur simpan produk
+Belum: bikin fitur hapus produk
